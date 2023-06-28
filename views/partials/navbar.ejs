@@ -1,0 +1,41 @@
+<!-- Navbar -->
+<nav
+  class="container mx-auto border-[1px] border-primaryColor rounded-lg shadow-lg drop-shadow-lg bg-black font-serif w-2/3 my-8 text-white flex justify-between items-center px-12"
+>
+  <h1
+    class="text-2xl px-3 py-5 hover:text-secondaryColor font-bold group cursor-pointer"
+  >
+    <a href="/members">
+      The
+      <span class="font-bold text-secondaryColor group-hover:text-white"
+        >Car</span
+      >
+      Lover's Club</a
+    >
+  </h1>
+  <div class="flex gap-4 items-center justify-center h-[70px] m-0 text-[18px]">
+    <% if (user) { %>
+    <button
+      class="hover:bg-secondaryColor hover:scale-105 h-full rounded-sm w-36 transition duration-300"
+    >
+      <a href="/members/create-message">Create Message</a>
+    </button>
+    <button class="navBtn">Member</button>
+    <button class="navBtn">Admin</button>
+    <button class="navBtn">
+      <a
+        href="/members/log-out
+          "
+        >Log Out</a
+      >
+    </button>
+    <% } else { %>
+    <button class="navBtn">
+      <a href="/members/log-in"> Log In</a>
+    </button>
+    <button class="navBtn">
+      <a href="/members/sign-up"> Sign Up</a>
+    </button>
+    <% } %>
+  </div>
+</nav>

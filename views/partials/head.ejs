@@ -1,0 +1,25 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primaryColor: "#2191DE",
+            secondaryColor: "#de6e21",
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .navBtn {
+        @apply hover:bg-secondaryColor hover:scale-105 h-full rounded-sm w-20 transition duration-300;
+      }
+    }
+  </style>
+</head>

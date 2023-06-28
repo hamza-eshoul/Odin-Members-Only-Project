@@ -1,53 +1,9 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primaryColor: "#2191DE",
-              secondaryColor: "#de6e21",
-            },
-          },
-        },
-      };
-    </script>
-  </head>
+  <%- include('./partials/head.ejs') %>
+
   <body class="bg-gray-100">
     <!-- Navbar -->
-    <div
-      class="container mx-auto border-[1px] border-primaryColor rounded-lg shadow-lg drop-shadow-lg bg-black font-serif w-2/3 my-8 text-white flex justify-between items-center px-12"
-    >
-      <h1
-        class="text-2xl px-3 py-5 hover:text-secondaryColor font-bold group cursor-pointer"
-      >
-        <a href="/members">
-          The
-          <span class="font-bold text-secondaryColor group-hover:text-white"
-            >Car</span
-          >
-          Lover's Club</a
-        >
-      </h1>
-      <div
-        class="flex gap-4 items-center justify-center h-[70px] m-0 text-[18px]"
-      >
-        <button
-          class="hover:bg-secondaryColor hover:scale-105 h-full rounded-sm w-20 transition duration-300"
-        >
-          <a href="/members/log-in"> Log In</a>
-        </button>
-        <button
-          class="hover:bg-secondaryColor hover:scale-105 h-full rounded-sm w-20 transition duration-300"
-        >
-          <a href="/members/sign-up"> Sign Up</a>
-        </button>
-      </div>
-    </div>
+    <%- include('./partials/navbar.ejs') %>
 
     <!-- Sign Up Section -->
     <section
@@ -65,7 +21,7 @@
         <img src="" alt="section header image" />
       </div>
 
-      <form action="" class="flex flex-col w-full gap-5">
+      <form method="POST" action="" class="flex flex-col w-full gap-5">
         <div class="flex flex-col gap-2">
           <label for="username" class="font-bold text-base"> Username: </label>
           <input

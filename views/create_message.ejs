@@ -1,0 +1,48 @@
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <%- include('./partials/navbar.ejs') %>
+
+    <!-- Sign Up Section -->
+    <section
+      class="container mx-auto flex flex-col gap-4 w-[40%] mb-20 mt-12 bg-white rounded-lg shadow-2xl px-12 py-8"
+    >
+      <!-- Section Header -->
+
+      <h1 class="text-4xl font-bold">Create a Message</h1>
+
+      <form method="POST" action="" class="flex flex-col w-full gap-5">
+        <div class="flex flex-col gap-2">
+          <label for="messageTitle" class="font-bold text-base"> Title: </label>
+          <input
+            type="text"
+            name="messageTitle"
+            id="messageTitle"
+            class="bg-secondaryColor/30 p-2 h-9 rounded"
+          />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="messageContent" class="font-bold text-base">
+            Message:
+          </label>
+          <textarea
+            name="messageContent"
+            id="messageContent"
+            rows="6"
+            class="bg-secondaryColor/30 p-2 rounded"
+          ></textarea>
+        </div>
+
+        <button
+          class="px-5 py-2 rounded bg-black hover:bg-primaryColor text-white w-44 transition duration-300"
+          type="submit"
+        >
+          Submit Message
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
