@@ -1,0 +1,71 @@
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <%- include('./partials/navbar.ejs') %>
+
+    <!-- Become A Member section -->
+    <section
+      class="container mx-auto flex flex-col gap-4 w-[40%] mb-6 mt-12 bg-white rounded-lg shadow-2xl px-12 py-8"
+    >
+      <!-- Section Header -->
+
+      <% if(user.membershipStatus == 'member') {%>
+
+      <h1 class="font-bold text-center text-2xl">
+        You are one of ours
+        <span class="text-secondaryColor font-cinzel text-3xl italic">
+          <%= user.userName %>
+        </span>
+      </h1>
+      <h2 class="text-center text-xl font-bold">
+        <h2 class="text-center text-xl font-bold">
+          Welcome to the Hathback Club !
+        </h2>
+      </h2>
+
+      <% } else{ %>
+
+      <h1 class="text-4xl font-bold">Become a Member</h1>
+
+      <form method="POST" action="" class="flex flex-col w-full gap-5">
+        <div class="flex flex-col gap-2">
+          <label for="memberPasscode" class="font-bold text-base">
+            Enter the Member Passcode:
+          </label>
+          <input
+            type="password"
+            name="memberPasscode"
+            id="memberPasscode"
+            class="bg-secondaryColor/30 p-2 h-9 rounded"
+          />
+        </div>
+
+        <button
+          class="px-5 py-2 rounded bg-black hover:bg-primaryColor text-white w-44 transition duration-300"
+          type="submit"
+        >
+          Submit Passcode
+        </button>
+        <% if(errors) {%>
+        <ul class="text-red-500 list-disc">
+          <% errors.forEach((error) => { %>
+          <li class="py-2"><%= error.msg %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </form>
+      <% } %>
+    </section>
+    <div class="h-3/5 w-3/4 mx-auto mb-4">
+      <% if(user.membershipStatus == 'member') {%>
+      <img
+        src="/images/hatchback.jpg"
+        alt="hatchback"
+        class="h-full w-full rounded-lg object-fit imgHover"
+      />
+      <% } %>
+    </div>
+  </body>
+</html>

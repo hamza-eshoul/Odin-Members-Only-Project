@@ -6,17 +6,25 @@ const Schema = mongoose.Schema;
 // Instatiate a user Schema
 const userSchema = new Schema({
   userName: {
-    type: "String",
-    require: true,
+    type: String,
+    required: true,
   },
   password: {
-    type: "String",
+    type: String,
     required: true,
   },
   membershipStatus: {
-    type: "String",
+    type: String,
     enum: ["member", "newMember"],
     required: true,
+  },
+  userImg: {
+    type: String,
+    required: true,
+  },
+  isAdmin: {
+    type: Boolean,
+    required: false,
   },
 });
 

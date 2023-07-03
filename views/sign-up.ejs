@@ -18,7 +18,11 @@
             <a href="/members/log-in" class="text-primaryColor">Log in</a>
           </p>
         </div>
-        <img src="" alt="section header image" />
+        <img
+          src="/images/carLogo.png"
+          alt="section header image"
+          class="w-[25%]"
+        />
       </div>
 
       <form action="" method="POST" class="flex flex-col w-full gap-5">
@@ -54,6 +58,35 @@
           />
         </div>
 
+        <input type="hidden" name="image_location" id="image_location" />
+        <div class="flex gap-1">
+          <img
+            src="/images/peugeot208.png"
+            alt="peugeot208"
+            class="w-[20%] object-fit rounded-lg cursor-pointer hover:scale-110 transform duration-300 selectImg"
+          />
+          <img
+            src="/images/clio-5.png"
+            alt="clio5"
+            class="w-[20%] rounded-lg cursor-pointer hover:scale-110 transform duration-300 selectImg"
+          />
+          <img
+            src="/images/toyotayaris.jpg"
+            alt="toyotayaris"
+            class="w-[20%] object-fit rounded-lg cursor-pointer hover:scale-110 transform duration-300 selectImg"
+          />
+          <img
+            src="/images/opel_corsa.jpg"
+            alt="opel_corsa"
+            class="w-[20%] object-fit rounded-lg cursor-pointer hover:scale-110 transform duration-300 selectImg"
+          />
+          <img
+            src="/images/hyundai_i20.jpeg"
+            alt="hyundai_i20"
+            class="w-[20%] object-fit rounded-lg cursor-pointer hover:scale-110 transform duration-300 selectImg"
+          />
+        </div>
+
         <button
           class="px-5 py-2 rounded bg-black hover:bg-primaryColor text-white w-28 transition duration-300"
           type="submit"
@@ -69,5 +102,31 @@
         <% } %>
       </form>
     </section>
+
+    <script>
+      const selectImage = document.querySelectorAll(".selectImg");
+
+      selectImage.forEach((image) => {
+        image.addEventListener("click", () => {
+          // reset select effect on all images
+          const allImages = document.querySelectorAll(".selectImg");
+          allImages.forEach((indvImage) => {
+            indvImage.classList.remove("border-2");
+            indvImage.classList.remove("border-primaryColor");
+          });
+
+          // mark the clicked image as selected
+          image.classList.add("border-2");
+          image.classList.add("border-primaryColor");
+
+          // capture the image attribute
+          const imgSrc = image.getAttribute("src");
+
+          // set the hidden input value to the selected img src
+          const imgInput = document.getElementById("image_location");
+          imgInput.setAttribute("value", imgSrc);
+        });
+      });
+    </script>
   </body>
 </html>

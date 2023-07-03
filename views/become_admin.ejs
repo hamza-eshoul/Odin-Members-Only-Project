@@ -1,0 +1,60 @@
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <%- include('./partials/navbar.ejs') %>
+
+    <!-- Become An Admin Section -->
+
+    <section
+      class="container mx-auto flex flex-col gap-4 w-[40%] mb-6 mt-12 bg-white rounded-lg shadow-2xl px-12 py-8"
+    >
+      <% if(user.isAdmin && user.isAdmin == true) {%>
+      <h1 class="font-bold text-center text-2xl">
+        Congratulations
+        <span class="font-cinzel text-3xl text-secondaryColor">
+          <%= user.userName %>.</span
+        >
+        <h2 class="text-center text-xl font-bold">
+          You are now an Admin and can delete any message you want !
+        </h2>
+      </h1>
+
+      <% } else {%>
+
+      <!-- Section Header -->
+
+      <h1 class="text-4xl font-bold">Become an Admin</h1>
+
+      <form method="POST" action="" class="flex flex-col w-full gap-5">
+        <div class="flex flex-col gap-2">
+          <label for="adminPasscode" class="font-bold text-base">
+            Enter the Admin Passcode:
+          </label>
+          <input
+            type="password"
+            name="adminPasscode"
+            id="adminPasscode"
+            class="bg-secondaryColor/30 p-2 h-9 rounded"
+          />
+        </div>
+
+        <button
+          class="px-5 py-2 rounded bg-black hover:bg-primaryColor text-white w-44 transition duration-300"
+          type="submit"
+        >
+          Submit Passcode
+        </button>
+        <% if(errors) {%>
+        <ul class="text-red-500 list-disc">
+          <% errors.forEach((error) => { %>
+          <li class="py-2"><%= error.msg %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </form>
+    </section>
+    <% } %>
+  </body>
+</html>

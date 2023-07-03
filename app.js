@@ -16,6 +16,7 @@ app.set("view engine", "ejs");
 
 // Middleware functions
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static("public"));
 app.use(
   session({
     secret: "some secret",
@@ -80,7 +81,9 @@ app.get("/", (req, res) => {
   res.redirect("/members");
 });
 
-// listen on port 4000
-app.listen(4000, () =>
-  console.log(`Server running and listening for requests on port 4000`)
+// listen on the server
+app.listen(process.env.PORT, () =>
+  console.log(
+    `Server running and listening for requests on port ${process.env.PORT} `
+  )
 );

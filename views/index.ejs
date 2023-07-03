@@ -9,93 +9,117 @@
     <section
       class="container mx-auto flex flex-col gap-10 w-[40%] items-center mb-20 mt-12"
     >
-      <!-- Card -->
+      <!-- Standard Opening Message -->
+      <% if (!user || user.membershipStatus !== 'member') {%>
       <div
-        class="bg-white w-full flex items-center gap-4 px-8 py-6 rounded-lg shadow-xl"
+        class="bg-white w-full flex items-center gap-6 px-8 py-6 rounded-lg shadow-xl"
       >
-        <!-- Card Image -->
-        <img src="" alt="Card Image" class="w-[20%] rounded-full" />
-        <!-- Card Info -->
+        <!-- Message Image -->
+        <img
+          src="/images/clio-5-nobg.png"
+          alt="Opening Message"
+          class="w-[20%] rounded-full"
+        />
+        <!-- Message Info -->
         <div class="flex flex-col gap-5 w-[80%]">
-          <h1 class="text-lg font-bold">Hello, World!</h1>
+          <h1 class="text-lg font-bold">Hello World !</h1>
           <p
             class="text-base text-primaryColor border-b-[1px] border-gray-300 pb-4 text-justify font-medium"
           >
-            To see additional information, register an account and log in, then
-            use the passcode "jojo" to become a member of The JoJo Club!
+            Welcome to the Cars Hatchback Club ! If you want to see more
+            information about the messages posted by the members of our Club,
+            you need to become a member too. In order to do so, log in and use
+            the passcode "hatchback" in the members tab.
           </p>
           <div class="flex text-sm justify-between items-center justify-center">
-            <h1>Posted by <span class="font-bold"> Hamza </span></h1>
-            <p>1868-04-04</p>
+            <p>
+              Posted by <span class="text-sm font-bold">Hamza Eshoul </span>
+            </p>
+            <p>14-07-1998</p>
           </div>
         </div>
       </div>
+      <% }%> <% if(messages.length > 0) {%> <% messages.forEach((message) => {%>
+      <div
+        class="bg-white w-full flex items-center gap-6 px-8 py-6 rounded-lg shadow-xl cardHover "
+      >
+        <!-- Message Image -->
+        <img
+          src="<%= message.messageImg %>"
+          alt="Message Image"
+          class="w-[20%] rounded-full"
+        />
+        <!-- Message Info -->
+        <div class="flex flex-col gap-5 w-[80%]">
+          <h1 class="text-lg font-bold"><%= message.messageTitle%></h1>
+          <p
+            class="text-base text-primaryColor border-b-[1px] border-gray-300 pb-4 text-justify font-medium"
+          >
+            <%= message.messageContent %>
+          </p>
+          <div class="flex text-sm justify-between items-center">
+            <% if (user) { %> <% if (user.membershipStatus == 'member') { %>
+            <p>
+              Posted by
+              <span class="text-sm font-bold">
+                <%= message.messageAuthor %>
+              </span>
+            </p>
 
-      <!-- Card -->
-      <div
-        class="bg-white w-full flex items-center gap-4 px-8 py-6 rounded-lg shadow-xl"
-      >
-        <!-- Card Image -->
-        <img src="" alt="Card Image" class="w-[20%] rounded-full" />
-        <!-- Card Info -->
-        <div class="flex flex-col gap-5 w-[80%]">
-          <h1 class="text-lg font-bold">Hello, World!</h1>
-          <p
-            class="text-base text-primaryColor border-b-[1px] border-gray-300 pb-4 text-justify font-medium"
-          >
-            To see additional information, register an account and log in, then
-            use the passcode "jojo" to become a member of The JoJo Club!
-          </p>
-          <div class="flex text-sm justify-between items-center justify-center">
-            <h1>Posted by <span class="font-bold"> Hamza </span></h1>
-            <p>1868-04-04</p>
-          </div>
-        </div>
-      </div>
+            <p><%= message.formattedDate %></p>
 
-      <!-- Card -->
-      <div
-        class="bg-white w-full flex items-center gap-4 px-8 py-6 rounded-lg shadow-xl"
-      >
-        <!-- Card Image -->
-        <img src="" alt="Card Image" class="w-[20%] rounded-full" />
-        <!-- Card Info -->
-        <div class="flex flex-col gap-5 w-[80%]">
-          <h1 class="text-lg font-bold">Hello, World!</h1>
-          <p
-            class="text-base text-primaryColor border-b-[1px] border-gray-300 pb-4 text-justify font-medium"
-          >
-            To see additional information, register an account and log in, then
-            use the passcode "jojo" to become a member of The JoJo Club!
-          </p>
-          <div class="flex text-sm justify-between items-center justify-center">
-            <h1>Posted by <span class="font-bold"> Hamza </span></h1>
-            <p>1868-04-04</p>
-          </div>
-        </div>
-      </div>
+            <% } else { %>
+            <p>
+              Posted by
+              <span class="text-sm font-bold"> Anonymous Authtor </span>
+            </p>
+            <p>Unknown Date</p>
+            <% } %> <% } else {%>
+            <p>
+              Posted by
+              <span class="text-sm font-bold"> Anonymous Authtor </span>
+            </p>
+            <p>Unknown Date</p>
 
-      <!-- Card -->
-      <div
-        class="bg-white w-full flex items-center gap-4 px-8 py-6 rounded-lg shadow-xl"
-      >
-        <!-- Card Image -->
-        <img src="" alt="Card Image" class="w-[20%] rounded-full" />
-        <!-- Card Info -->
-        <div class="flex flex-col gap-5 w-[80%]">
-          <h1 class="text-lg font-bold">Hello, World!</h1>
-          <p
-            class="text-base text-primaryColor border-b-[1px] border-gray-300 pb-4 text-justify font-medium"
-          >
-            To see additional information, register an account and log in, then
-            use the passcode "jojo" to become a member of The JoJo Club!
-          </p>
-          <div class="flex text-sm justify-between items-center justify-center">
-            <h1>Posted by <span class="font-bold"> Hamza </span></h1>
-            <p>1868-04-04</p>
+            <% } %>
           </div>
+
+          <% if(user && user.isAdmin && user.isAdmin == true) {%>
+          <div class="flex justify-end">
+            <button
+              class="px-1.5 py-2 rounded bg-black hover:bg-primaryColor text-white w-32 text-[15px] transition duration-300 flex-end deleteMsg"
+              data-msgid="<%= message._id %>"
+            >
+              Delete Message
+            </button>
+          </div>
+          <% }%>
         </div>
       </div>
+      <% }) %> <% } else { %>
+
+      <h1>There are no messages to display ...</h1>
+
+      <% } %>
     </section>
+
+    <script>
+      const deleteMsgBtns = document.querySelectorAll(".deleteMsg");
+
+      deleteMsgBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const endpoint = `/members/delete-message/${btn.dataset.msgid}`;
+
+          fetch(endpoint, {
+            method: "DELETE",
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              location.reload();
+            })
+            .catch((err) => console.log(err));
+        });
+      });
+    </script>
   </body>
 </html>

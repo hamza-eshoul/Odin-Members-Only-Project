@@ -2,6 +2,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap"
+    rel="stylesheet"
+  />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -10,6 +16,9 @@
           colors: {
             primaryColor: "#2191DE",
             secondaryColor: "#de6e21",
+          },
+          fontFamily: {
+            cinzel: ["Cinzel Decorative", "cursive"],
           },
         },
       },
@@ -20,6 +29,19 @@
       .navBtn {
         @apply hover:bg-secondaryColor hover:scale-105 h-full rounded-sm w-20 transition duration-300;
       }
+    }
+
+    .cardHover,
+    .imgHover {
+      transition-property: box-shadow;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in-out;
+      transition-delay: 0s;
+    }
+
+    .cardHover:hover,
+    .imgHover:hover {
+      box-shadow: 10px 10px 73px 5px rgba(0, 0, 0, 0.75);
     }
   </style>
 </head>

@@ -42,6 +42,13 @@
         >
           Submit Message
         </button>
+        <% if(errors) {%>
+        <ul class="text-red-500 list-disc">
+          <% errors.forEach((error) => { %>
+          <li class="py-2"><%= error.msg %></li>
+          <% }) %>
+        </ul>
+        <% } %>
       </form>
     </section>
   </body>
