@@ -22,8 +22,6 @@ exports.user_sign_up_get = async (req, res, next) => {
 };
 
 exports.user_sign_up_post = [
-  // find all userNames in Db
-
   // Validate and sanitize the form fields
   body("username", "Username must contain at least 3 characters ")
     .trim()
